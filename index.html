@@ -618,6 +618,133 @@
         padding: 5px 8px;
       }
     }
+
+    /* ── FLOATING SAVE BUTTON ── */
+    .fab-save {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 2000;
+      background: #27ae60;
+      color: #fff;
+      border: none;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(39, 174, 96, .4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .3s;
+      font-size: 1.5rem;
+    }
+
+    .fab-save:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 24px rgba(39, 174, 96, .5);
+    }
+
+    .fab-save:active {
+      transform: scale(.95);
+    }
+
+    .fab-save .fab-label {
+      position: absolute;
+      right: 70px;
+      background: #2c3e50;
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: .8rem;
+      white-space: nowrap;
+      font-weight: 600;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    .fab-save:hover .fab-label {
+      opacity: 1;
+    }
+
+    /* Toast notification */
+    .toast {
+      position: fixed;
+      bottom: 96px;
+      right: 24px;
+      background: #2c3e50;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: .9rem;
+      z-index: 3000;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, .2);
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all .3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Save status indicator */
+    .save-status {
+      font-size: .75rem;
+      color: #7f8c8d;
+      text-align: center;
+      margin-bottom: .5rem;
+      transition: opacity .3s;
+    }
+
+    .save-status.saved {
+      color: #27ae60;
+    }
+
+    .btn-save-inline {
+      background: #27ae60;
+      font-size: 1rem;
+      padding: 14px 28px;
+    }
+
+    .btn-save-inline:hover {
+      background: #219a52;
+    }
+
+    @media (max-width: 700px) {
+      .fab-save {
+        width: 52px;
+        height: 52px;
+        bottom: 16px;
+        right: 16px;
+        font-size: 1.3rem;
+      }
+
+      .fab-save .fab-label {
+        display: none;
+      }
+
+      .toast {
+        bottom: 80px;
+        right: 16px;
+        left: 16px;
+        font-size: .85rem;
+      }
+    }
+
+    @media print {
+
+      .fab-save,
+      .toast,
+      .save-status {
+        display: none !important;
+      }
+    }
   </style>
 </head>
 
@@ -1419,12 +1546,14 @@
       <div class="submit-card">
         <h2>✉️ Enviar Respostas</h2>
         <p>Ao clicar no botão abaixo, suas respostas serão enviadas diretamente para o Arq. Marcelo Almeida.</p>
+        <div class="save-status" id="save-status"></div>
         <div class="btn-row">
+          <button type="button" class="btn btn-save-inline" onclick="salvarRascunho()">💾 Salvar Rascunho</button>
           <button type="submit" class="btn btn-send">📧 Enviar Questionário</button>
           <button type="button" class="btn" onclick="window.print()">🖨️ Gerar PDF</button>
         </div>
-        <p style="margin-top:12px;font-size:.85rem;opacity:.7">Caso prefira, pode também gerar um PDF e enviar por
-          WhatsApp ou e-mail.</p>
+        <p style="margin-top:12px;font-size:.85rem;opacity:.7">Seu progresso é salvo automaticamente. Pode fechar e
+          voltar depois sem perder os dados.</p>
       </div>
 
     </main>
@@ -1434,8 +1563,19 @@
     CAU nº A313706-6 &nbsp;|&nbsp; (61) 99919-2302 &nbsp;|&nbsp; malmeidaarquitetura@gmail.com
   </footer>
 
+  <!-- Floating Save Button -->
+  <button class="fab-save" onclick="salvarRascunho()" title="Salvar Rascunho">
+    💾
+    <span class="fab-label">Salvar Rascunho</span>
+  </button>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
   <script>
-    // Nav highlight
+    const STORAGE_KEY = 'briefing_urgel_v3';
+
+    // ── Nav highlight ──
     const secs = document.querySelectorAll('.card[id]');
     const navs = document.querySelectorAll('nav.topnav a');
     window.addEventListener('scroll', () => {
@@ -1444,7 +1584,7 @@
       navs.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
     });
 
-    // Progress bar
+    // ── Progress bar ──
     function updateProgress() {
       const fields = document.querySelectorAll('textarea, input[type=text], select');
       let filled = 0, total = 0;
@@ -1464,9 +1604,123 @@
       document.getElementById('prog-pct').textContent = pct + '%';
       document.getElementById('prog-fill').style.width = pct + '%';
     }
-    document.addEventListener('input', updateProgress);
-    document.addEventListener('change', updateProgress);
-    updateProgress();
+
+    // ── Save to localStorage ──
+    function coletarDados() {
+      const data = {};
+      // Text inputs, textareas, selects
+      document.querySelectorAll('textarea, input[type=text], input[type=email], input[type=number], select').forEach(f => {
+        if (f.name && f.name !== '_gotcha' && !f.name.startsWith('_')) {
+          data[f.name] = f.value;
+        }
+      });
+      // Radio buttons
+      document.querySelectorAll('input[type=radio]:checked').forEach(r => {
+        data['radio_' + r.name] = r.value;
+      });
+      // Checkboxes
+      document.querySelectorAll('input[type=checkbox]').forEach(c => {
+        data['check_' + c.name] = c.checked;
+      });
+      return data;
+    }
+
+    function salvarDados() {
+      try {
+        const data = coletarDados();
+        data._savedAt = new Date().toISOString();
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        return true;
+      } catch (e) {
+        console.error('Erro ao salvar:', e);
+        return false;
+      }
+    }
+
+    function restaurarDados() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return false;
+        const data = JSON.parse(raw);
+        // Texts, textareas, selects
+        document.querySelectorAll('textarea, input[type=text], input[type=email], input[type=number], select').forEach(f => {
+          if (f.name && data[f.name] !== undefined) {
+            f.value = data[f.name];
+          }
+        });
+        // Radios
+        document.querySelectorAll('input[type=radio]').forEach(r => {
+          if (data['radio_' + r.name] === r.value) {
+            r.checked = true;
+          }
+        });
+        // Checkboxes
+        document.querySelectorAll('input[type=checkbox]').forEach(c => {
+          if (data['check_' + c.name] !== undefined) {
+            c.checked = data['check_' + c.name];
+          }
+        });
+        // Update save status
+        if (data._savedAt) {
+          const dt = new Date(data._savedAt);
+          const statusEl = document.getElementById('save-status');
+          statusEl.textContent = '✅ Último salvamento: ' + dt.toLocaleString('pt-BR');
+          statusEl.className = 'save-status saved';
+        }
+        return true;
+      } catch (e) {
+        console.error('Erro ao restaurar:', e);
+        return false;
+      }
+    }
+
+    // ── Toast notification ──
+    function showToast(msg, duration) {
+      duration = duration || 3000;
+      const t = document.getElementById('toast');
+      t.innerHTML = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), duration);
+    }
+
+    // ── Manual save button ──
+    function salvarRascunho() {
+      if (salvarDados()) {
+        showToast('💾 Rascunho salvo com sucesso!');
+        const dt = new Date();
+        const statusEl = document.getElementById('save-status');
+        statusEl.textContent = '✅ Último salvamento: ' + dt.toLocaleString('pt-BR');
+        statusEl.className = 'save-status saved';
+      } else {
+        showToast('❌ Erro ao salvar. Tente novamente.');
+      }
+    }
+
+    // ── Auto-save (debounced) ──
+    let autoSaveTimer = null;
+    function autoSave() {
+      clearTimeout(autoSaveTimer);
+      autoSaveTimer = setTimeout(() => {
+        salvarDados();
+        const statusEl = document.getElementById('save-status');
+        statusEl.textContent = '✅ Salvo automaticamente às ' + new Date().toLocaleTimeString('pt-BR');
+        statusEl.className = 'save-status saved';
+      }, 2000);
+    }
+
+    // ── Initialize ──
+    document.addEventListener('DOMContentLoaded', () => {
+      // Restore saved data
+      const restored = restaurarDados();
+      if (restored) {
+        showToast('📋 Dados anteriores restaurados!', 4000);
+      }
+      updateProgress();
+    });
+
+    // Listen for changes
+    document.addEventListener('input', () => { updateProgress(); autoSave(); });
+    document.addEventListener('change', () => { updateProgress(); autoSave(); });
   </script>
 
 </body>
