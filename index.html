@@ -386,18 +386,236 @@
       }
     }
 
-    @media(max-width:700px) {
+    /* ── TABLET ── */
+    @media (max-width: 900px) {
+      main {
+        padding: 1.2rem;
+      }
+
+      .card {
+        padding: 1.5rem;
+      }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 700px) {
+
+      /* Layout */
+      main {
+        padding: .8rem;
+      }
+
+      .card {
+        padding: 1.2rem 1rem;
+        margin-bottom: 1.2rem;
+        border-radius: 8px;
+      }
+
       .g2 {
-        grid-template-columns: 1fr
+        grid-template-columns: 1fr;
+        gap: .8rem;
+      }
+
+      /* Header */
+      header {
+        padding: .8rem 1rem;
+        flex-direction: column;
+        gap: .3rem;
+        text-align: center;
+      }
+
+      .logo h1 {
+        font-size: 1rem;
+        letter-spacing: 1px;
+      }
+
+      .logo span {
+        font-size: .7rem;
+      }
+
+      /* Navigation — horizontal scroll on mobile */
+      nav.topnav {
+        padding: .5rem .8rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        flex-wrap: nowrap;
+        gap: .4rem;
+        top: 52px;
+      }
+
+      nav.topnav a {
+        font-size: .75rem;
+        padding: 6px 10px;
+        flex-shrink: 0;
+      }
+
+      /* Hide scrollbar but keep function */
+      nav.topnav::-webkit-scrollbar {
+        height: 0;
+        display: none;
       }
 
       nav.topnav {
-        flex-direction: column
+        -ms-overflow-style: none;
+        scrollbar-width: none;
       }
 
-      header {
+      /* Typography */
+      h2 {
+        font-size: 1.15rem;
+        gap: 6px;
+      }
+
+      h3 {
+        font-size: .95rem;
+        margin: 1rem 0 .5rem;
+      }
+
+      label {
+        font-size: .88rem;
+        line-height: 1.4;
+      }
+
+      .info {
+        font-size: .85rem;
+        padding: 10px 12px;
+      }
+
+      /* Form elements — larger touch targets */
+      input[type=text],
+      input[type=number],
+      input[type=email],
+      textarea,
+      select {
+        font-size: 16px;
+        /* Prevents iOS zoom on focus */
+        padding: 12px;
+        border-radius: 8px;
+      }
+
+      select {
+        min-height: 48px;
+      }
+
+      textarea {
+        min-height: 80px;
+      }
+
+      /* Checkboxes — bigger touch area */
+      .chk-group {
+        gap: .5rem;
+      }
+
+      .chk-item {
+        padding: 10px 14px;
+        font-size: .85rem;
+        min-height: 44px;
+      }
+
+      .chk-item input[type=checkbox] {
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
+      }
+
+      /* Radio buttons — bigger touch area */
+      .radio-row {
+        gap: .6rem;
         flex-direction: column;
-        gap: .5rem
+      }
+
+      .radio-row label {
+        padding: 10px 14px;
+        background: #f8f9fa;
+        border: 1px solid var(--brd);
+        border-radius: 8px;
+        min-height: 44px;
+        font-size: .88rem;
+      }
+
+      .radio-row label input[type=radio] {
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
+      }
+
+      /* Buttons */
+      .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 14px 20px;
+        font-size: 1rem;
+        border-radius: 8px;
+      }
+
+      .btn-send {
+        padding: 16px 24px;
+        font-size: 1.1rem;
+      }
+
+      .btn-row {
+        flex-direction: column;
+        gap: .6rem;
+      }
+
+      /* Submit card */
+      .submit-card {
+        padding: 1.5rem 1rem;
+        border-radius: 8px;
+      }
+
+      .submit-card h2 {
+        font-size: 1.1rem;
+      }
+
+      .submit-card p {
+        font-size: .85rem;
+      }
+
+      /* Progress bar */
+      .progress-bar {
+        height: 10px;
+        margin: .8rem 0;
+      }
+
+      .progress-text {
+        font-size: .8rem;
+      }
+
+      /* Field groups */
+      .fg {
+        margin-bottom: 1rem;
+      }
+
+      /* Footer */
+      footer {
+        padding: 1.5rem .8rem;
+        font-size: .75rem;
+      }
+    }
+
+    /* ── VERY SMALL SCREENS ── */
+    @media (max-width: 380px) {
+      main {
+        padding: .5rem;
+      }
+
+      .card {
+        padding: 1rem .8rem;
+      }
+
+      h2 {
+        font-size: 1.05rem;
+      }
+
+      .chk-item {
+        padding: 8px 10px;
+        font-size: .8rem;
+      }
+
+      nav.topnav a {
+        font-size: .7rem;
+        padding: 5px 8px;
       }
     }
   </style>
