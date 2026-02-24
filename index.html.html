@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing e Questionário — Projeto Dr. Urgel | Arq. Marcelo Almeida</title>
+<meta name="description" content="Questionário de briefing para o projeto de reforma e ampliação residencial — Dr. Urgel, Lago Sul, Brasília/DF">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+:root{--pri:#2c3e50;--sec:#34495e;--acc:#c0854a;--bg:#f4f7f6;--card:#fff;--brd:#dcdde1;--txt:#2f3640}
+@page{size:A4;margin:15mm}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;min-height:100vh}
+header{background:var(--pri);color:#fff;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+.logo h1{font-size:1.2rem;text-transform:uppercase;letter-spacing:2px;font-weight:700}
+.logo span{font-size:.8rem;font-weight:300;opacity:.8}
+.btn{background:var(--acc);color:#fff;border:none;padding:10px 20px;border-radius:5px;cursor:pointer;font-weight:600;transition:all .3s;display:inline-flex;align-items:center;gap:8px;font-size:.9rem}
+.btn:hover{filter:brightness(1.15);transform:translateY(-1px)}
+.btn-send{background:#27ae60;font-size:1.1rem;padding:14px 32px}
+.btn-send:hover{background:#219a52}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+nav.topnav{background:#fff;border-bottom:1px solid var(--brd);padding:.6rem 2rem;position:sticky;top:66px;z-index:999;display:flex;gap:.5rem;flex-wrap:wrap}
+nav.topnav a{text-decoration:none;color:var(--sec);font-size:.8rem;padding:5px 12px;border-radius:20px;border:1px solid var(--brd);transition:all .2s;white-space:nowrap}
+nav.topnav a:hover,nav.topnav a.active{background:var(--pri);color:#fff;border-color:var(--pri)}
+main{padding:2rem;max-width:1000px;margin:0 auto;width:100%}
+.card{background:var(--card);border-radius:10px;padding:2rem;margin-bottom:2rem;box-shadow:0 4px 6px rgba(0,0,0,.05);border-left:5px solid var(--pri)}
+.card.accent{border-left-color:var(--acc)}
+h2{color:var(--pri);font-size:1.35rem;margin-bottom:1.2rem;border-bottom:1px solid var(--brd);padding-bottom:8px;display:flex;align-items:center;gap:10px}
+h3{color:var(--sec);font-size:1.05rem;margin:1.2rem 0 .6rem;font-weight:600}
+.info{background:#eef6ff;border-left:4px solid #4a90d9;padding:12px 15px;margin-bottom:18px;font-size:.9rem;border-radius:0 5px 5px 0}
+.info.warn{background:#fff9e6;border-left-color:#f0d060}
+.info.tip{background:#f0fff0;border-left-color:#27ae60}
+.fg{margin-bottom:1.2rem}
+label{display:block;font-weight:600;margin-bottom:4px;font-size:.92rem;color:var(--sec)}
+input[type=text],input[type=number],input[type=email],textarea,select{width:100%;padding:10px 12px;border:1px solid var(--brd);border-radius:5px;font-family:inherit;font-size:.92rem;transition:border-color .3s}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--acc)}
+textarea{resize:vertical}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.chk-group{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:6px}
+.chk-item{display:flex;align-items:center;gap:6px;background:#f8f9fa;padding:6px 14px;border-radius:20px;border:1px solid var(--brd);cursor:pointer;font-size:.85rem;transition:all .2s}
+.chk-item:hover{background:#eef1f5}
+.chk-item input{cursor:pointer}
+.radio-row{display:flex;gap:1rem;margin-top:6px;flex-wrap:wrap}
+.radio-row label{display:flex;align-items:center;gap:5px;font-weight:400;cursor:pointer;font-size:.9rem}
+footer{text-align:center;padding:2rem;font-size:.8rem;color:#7f8c8d}
+.submit-card{background:linear-gradient(135deg,#2c3e50,#34495e);color:#fff;border-radius:10px;padding:2.5rem;margin-bottom:2rem;text-align:center;border-left:5px solid var(--acc)}
+.submit-card h2{color:#fff;border-bottom-color:rgba(255,255,255,.2);justify-content:center}
+.submit-card p{margin-bottom:1rem;opacity:.9}
+.progress-bar{background:#e0e0e0;border-radius:10px;height:8px;margin:1rem 0;overflow:hidden}
+.progress-fill{background:var(--acc);height:100%;border-radius:10px;width:0%;transition:width .5s}
+.progress-text{font-size:.85rem;color:var(--sec);text-align:center;margin-bottom:1rem}
+@media print{body{background:#fff}header,nav.topnav,.btn,.btn-row,.submit-card,.progress-bar,.progress-text{display:none!important}main{padding:0;max-width:none;margin:0}.card{box-shadow:none;border:1px solid var(--brd);border-left:5px solid var(--pri);page-break-inside:avoid;margin-bottom:14px;padding:1.2rem}.card.accent{border-left-color:var(--acc)}input,textarea,select{border:none!important;border-bottom:1px solid #ccc!important;border-radius:0!important;padding:4px 0!important;background:transparent!important}.chk-item{background:transparent!important;border:none!important;padding:2px 4px!important}h2{font-size:1.1rem}}
+@media(max-width:700px){.g2{grid-template-columns:1fr}nav.topnav{flex-direction:column}header{flex-direction:column;gap:.5rem}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><h1>Marcelo Almeida</h1><span>Arquitetura &amp; Urbanismo</span></div>
+</header>
+
+<nav class="topnav">
+  <a href="#sec-perfil">👤 Perfil</a>
+  <a href="#sec-estilo">🎨 Estilo</a>
+  <a href="#sec-bnh-master">🚿 Banheiro Master</a>
+  <a href="#sec-closet">👔 Closet</a>
+  <a href="#sec-nova-suite">🏗️ Nova Suíte</a>
+  <a href="#sec-bnh-novo">🛁 Banheiro Novo</a>
+  <a href="#sec-infra">⚙️ Infraestrutura</a>
+  <a href="#sec-obs">📝 Observações</a>
+</nav>
+
+<form action="https://formsubmit.co/malmeidaarquitetura@gmail.com" method="POST">
+  <!-- FormSubmit config -->
+  <input type="hidden" name="_subject" value="Briefing e Questionário — Projeto Dr. Urgel">
+  <input type="hidden" name="_captcha" value="true">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_next" value="">
+  <input type="text" name="_gotcha" style="display:none">
+<main>
+
+<div class="info" style="margin-bottom:1.5rem;">
+  <strong>Olá Dr. Urgel!</strong> Este documento reúne o <strong>Briefing</strong> e o <strong>Questionário Técnico</strong> do seu projeto de <strong>reforma e ampliação residencial</strong> — SHIS QI 5, Lago Sul, Brasília/DF.<br><br>
+  <strong>Ambientes em intervenção:</strong><br>
+  &bull; <strong>Suíte Master</strong> — Reforma completa do Banheiro e do Closet<br>
+  &bull; <strong>Nova Suíte (Sótão)</strong> — Criação de dormitório + banheiro (ampliação com platibanda)<br>
+  &bull; <strong>Saleta Íntima</strong> — Novo ambiente entre os quartos<br><br>
+  Por favor, <strong>preencha digitalmente</strong> cada seção abaixo. Ao finalizar, clique em <strong>"Enviar Respostas"</strong> no final da página.<br>
+  Caso algum campo não se aplique ou não tenha preferência, pode deixar em branco.
+</div>
+<div class="progress-text">Progresso do preenchimento: <strong id="prog-pct">0%</strong></div>
+<div class="progress-bar"><div class="progress-fill" id="prog-fill"></div></div>
+
+
+<div class="card" id="sec-perfil">
+  <h2>👤 1. Perfil e Rotina</h2>
+  <div class="info">Precisamos conhecer sua rotina para criar um projeto sob medida.</div>
+  <div class="fg"><label>Os animais de estimação circulam nas áreas da reforma? Se sim, quais animais e qual o porte?</label>
+    <textarea name="animais" rows="2" placeholder="Ex: Sim, 2 cachorros de porte médio circulam por toda a casa..."></textarea></div>
+  <div class="fg"><label>Quais são os seus objetivos e expectativas para os novos ambientes? (Novo closet, novo banheiro master, saleta íntima entre os quartos, nova suíte no sótão e seu banheiro)</label>
+    <textarea name="objetivos" rows="4" placeholder="Ex: No closet, quero mais organização. No banheiro master, modernizar. Na saleta, um espaço aconchegante. Na nova suíte, um quarto confortável..."></textarea></div>
+  <div class="fg"><label>Sobre a rotina na saleta entre os quartos: em quais horários costumam utilizá-la? Existe necessidade de maior isolamento acústico? É um ambiente de uso compartilhado?</label>
+    <textarea name="rotina_saleta" rows="3" placeholder="Ex: Usamos à noite para leitura, precisamos de silêncio..."></textarea></div>
+  <div class="fg"><label>Em relação à rotina do casal — de modo geral, costumam se arrumar e utilizar o closet/banheiro nos mesmos horários ou em momentos distintos?</label>
+    <textarea name="rotina_casal" rows="2" placeholder="Ex: Geralmente nos arrumamos no mesmo horário pela manhã..."></textarea></div>
+  <div class="fg"><label>Quais atividades serão realizadas na saleta íntima? Tem interesse em utilizá-la como segundo escritório, segunda sala de TV, espaço de leitura, ou outro uso?</label>
+    <textarea name="atividades_saleta" rows="3" placeholder="Ex: Gostaria de usar como sala de TV e espaço de leitura..."></textarea></div>
+  <div class="fg"><label>Quais atividades serão realizadas na nova suíte do sótão?</label>
+    <textarea name="atividades_suite" rows="2" placeholder="Ex: Dormir, assistir TV, eventualmente trabalhar..."></textarea></div>
+  <div class="fg"><label>Alguma necessidade especial de acessibilidade?</label>
+    <textarea name="acessibilidade" rows="2" placeholder="Ex: Barras de apoio, piso antiderrapante..."></textarea></div>
+</div>
+
+
+<div class="card" id="sec-estilo">
+  <h2>🎨 2. Referências e Estilo Visual</h2>
+  <div class="info">Queremos entender a estética que mais agrada.</div>
+  <div class="fg"><label>Estilos que mais agradam:</label>
+    <div class="chk-group"><label class="chk-item"><input type="checkbox" name="estilo_Clássico___Sóbrio" value="Clássico / Sóbrio"> Clássico / Sóbrio</label><label class="chk-item"><input type="checkbox" name="estilo_Contemporâneo___Clean" value="Contemporâneo / Clean"> Contemporâneo / Clean</label><label class="chk-item"><input type="checkbox" name="estilo_Moderno___Minimalista" value="Moderno / Minimalista"> Moderno / Minimalista</label><label class="chk-item"><input type="checkbox" name="estilo_Rústico___Natural" value="Rústico / Natural"> Rústico / Natural</label><label class="chk-item"><input type="checkbox" name="estilo_Industrial" value="Industrial"> Industrial</label><label class="chk-item"><input type="checkbox" name="estilo_Outro" value="Outro"> Outro</label></div></div>
+  <div class="g2">
+    <div class="fg"><label>Preferência de Cores / Tons</label><textarea name="cores" rows="2" placeholder="Ex: Tons neutros, madeira, branco, cinza..."></textarea></div>
+    <div class="fg"><label>Materiais que aprecia</label><textarea name="materiais" rows="2" placeholder="Ex: Madeira, mármore, porcelanato..."></textarea></div>
+  </div>
+  <div class="fg"><label>Tem algum item específico que gostaria de manter?</label>
+    <textarea name="itens_manter" rows="2" placeholder="Indicar item e medidas aproximadas."></textarea></div>
+  <div class="fg"><label>Tem algum item, material ou detalhe que NÃO gosta?</label>
+    <textarea name="nao_gosta" rows="2" placeholder="Ex: Não gosto de pastilhas..."></textarea></div>
+  <div class="fg"><label>Caso tenha alguma referência ou exemplo que goste, por favor me avise para que eu possa adicionar à pasta de referências visuais que será compartilhada com vocês.</label>
+    <textarea name="referencias" rows="2" placeholder="Cole links ou descreva. Pode enviar imagens por WhatsApp."></textarea></div>
+</div>
+
+
+<div class="card accent" id="sec-bnh-master">
+  <h2>🚿 3. Banheiro Master — Reforma Completa</h2>
+  <div class="info warn">Reformulação completa do banheiro da suíte master.</div>
+  <div class="info tip"><strong>Dica:</strong> Caso não tenha sugestão específica, não é necessário preencher. Vamos seguir com o processo criativo com base nas referências sugeridas.</div>
+  <h3>3.1 Bancada e Cubas</h3>
+  <div class="g2">
+    <div class="fg"><label>Quantidade de cubas</label><select name="bm_cubas"><option value="">Selecione...</option><option>1 cuba</option><option>2 cubas (individualizadas)</option></select></div>
+    <div class="fg"><label>Estilo de cuba</label><select name="bm_estilo_cuba"><option value="">Selecione...</option><option>Esculpida na pedra</option><option>De embutir</option><option>De sobrepor / Apoio</option></select></div>
+  </div>
+  <div class="g2">
+    <div class="fg"><label>Material / cor da bancada</label><input type="text" name="bm_material_bancada" placeholder="Ex: Mármore branco, nanoglass..."></div>
+    <div class="fg"><label>Bancada clara ou escura?</label><select name="bm_tom_bancada"><option value="">Selecione...</option><option>Clara</option><option>Escura</option><option>Sem preferência</option></select></div>
+  </div>
+  <h3>3.2 Área do Banho</h3>
+  <div class="g2">
+    <div class="fg"><label>Banheira de imersão / hidro?</label><div class="radio-row"><label><input type="radio" name="bm_banheira" value="Sim"> Sim</label><label><input type="radio" name="bm_banheira" value="Não"> Não</label><label><input type="radio" name="bm_banheira" value="Avaliar no projeto"> Avaliar no projeto</label></div></div>
+    <div class="fg"><label>Tipo de chuveiro</label><select name="bm_chuveiro"><option value="">Selecione...</option><option>Chuveiro de teto (rain shower)</option><option>Chuveiro de parede</option><option>Duplo (teto + ducha de mão)</option><option>Sem preferência</option></select></div>
+  </div>
+  <div class="g2">
+    <div class="fg"><label>Nicho grande no box?</label><div class="radio-row"><label><input type="radio" name="bm_nicho" value="Sim"> Sim</label><label><input type="radio" name="bm_nicho" value="Não"> Não</label></div></div>
+    <div class="fg"><label>Banco / assento no box?</label><div class="radio-row"><label><input type="radio" name="bm_banco" value="Sim"> Sim</label><label><input type="radio" name="bm_banco" value="Não"> Não</label></div></div>
+  </div>
+  <h3>3.3 Revestimentos</h3>
+  <div class="g2">
+    <div class="fg"><label>Piso — material/cor</label><input type="text" name="bm_piso" placeholder="Ex: Porcelanato marmorizado claro..."></div>
+    <div class="fg"><label>Paredes — material/cor</label><input type="text" name="bm_paredes" placeholder="Ex: Porcelanato grande formato..."></div>
+  </div>
+  <div class="fg"><label>Troca total ou parcial?</label><div class="radio-row"><label><input type="radio" name="bm_troca" value="Total"> Total</label><label><input type="radio" name="bm_troca" value="Parcial"> Parcial</label></div></div>
+  <div class="fg"><label>Se parcial, quais áreas manter/trocar?</label><textarea name="bm_troca_detalhe" rows="2"></textarea></div>
+  <h3>3.4 Metais e Louças</h3>
+  <div class="g2">
+    <div class="fg"><label>Torneira</label><select name="bm_torneira"><option value="">Selecione...</option><option>Monocomando</option><option>Misturador</option><option>De parede</option><option>Sem preferência</option></select></div>
+    <div class="fg"><label>Acabamento dos metais</label><select name="bm_metais"><option value="">Selecione...</option><option>Cromado</option><option>Preto fosco</option><option>Dourado / Gold</option><option>Rosé gold</option><option>Sem preferência</option></select></div>
+  </div>
+  <div class="g2">
+    <div class="fg"><label>Vaso sanitário</label><select name="bm_vaso"><option value="">Selecione...</option><option>Caixa acoplada</option><option>Suspenso (parede)</option><option>Sem preferência</option></select></div>
+    <div class="fg"><label>Ducha higiênica?</label><div class="radio-row"><label><input type="radio" name="bm_ducha" value="Sim"> Sim</label><label><input type="radio" name="bm_ducha" value="Não"> Não</label></div></div>
+  </div>
+  <div class="fg"><label>Água quente na torneira da pia?</label><div class="radio-row"><label><input type="radio" name="bm_aq" value="Sim"> Sim</label><label><input type="radio" name="bm_aq" value="Não"> Não</label></div></div>
+  <h3>3.5 Iluminação e Extras</h3>
+  <div class="g2">
+    <div class="fg"><label>Tipo de iluminação</label><select name="bm_ilum"><option value="">Selecione...</option><option>Quente / Amarela — Achegante</option><option>Neutra — Funcional</option><option>Mista</option></select></div>
+    <div class="fg"><label>Iluminação para espelho/maquiagem?</label><div class="radio-row"><label><input type="radio" name="bm_luzE" value="Sim"> Sim</label><label><input type="radio" name="bm_luzE" value="Não"> Não</label></div></div>
+  </div>
+  <div class="fg"><label>Extras desejados:</label>
+    <div class="chk-group"><label class="chk-item"><input type="checkbox" name="bm_extras_Aquecedor_de_toalhas" value="Aquecedor de toalhas"> Aquecedor de toalhas</label><label class="chk-item"><input type="checkbox" name="bm_extras_Espelho_com_LED" value="Espelho com LED"> Espelho com LED</label><label class="chk-item"><input type="checkbox" name="bm_extras_Ralo_linear" value="Ralo linear"> Ralo linear</label><label class="chk-item"><input type="checkbox" name="bm_extras_Nicho_embutido_(porta-shampoo)" value="Nicho embutido (porta-shampoo)"> Nicho embutido (porta-shampoo)</label><label class="chk-item"><input type="checkbox" name="bm_extras_Exaustor" value="Exaustor"> Exaustor</label><label class="chk-item"><input type="checkbox" name="bm_extras_Fechadura_com_chave" value="Fechadura com chave"> Fechadura com chave</label></div></div>
+  <div class="fg"><label>Itens de adorno ou necessidades elétricas específicas? (Ex: tomadas p/ secador, chapinha, luminária...)</label>
+    <textarea name="bm_adornos" rows="2" placeholder="Ex: Tomada para secador e chapinha próxima ao espelho..."></textarea></div>
+  <h3>3.6 Forro e Infraestrutura</h3>
+  <div class="g2">
+    <div class="fg"><label>Forro de gesso</label><select name="bm_forro"><option value="">Selecione...</option><option>Manter existente + novos detalhes</option><option>Executar novo (total)</option><option>Sem preferência</option></select></div>
+    <div class="fg"><label>Aquecimento de água</label><select name="bm_aquec"><option value="">Selecione...</option><option>Solar (manter/ampliar)</option><option>A gás</option><option>Elétrico</option><option>Sem preferência</option></select></div>
+  </div>
+  <div class="fg"><label>Iluminação: prefere um projeto planejado e personalizado ou mais simplificado?</label>
+    <div class="radio-row"><label><input type="radio" name="bm_luz_plan" value="Planejada / Personalizada"> Planejada / Personalizada</label><label><input type="radio" name="bm_luz_plan" value="Simplificada / Funcional"> Simplificada / Funcional</label><label><input type="radio" name="bm_luz_plan" value="Sem preferência"> Sem preferência</label></div></div>
+  <div class="fg"><label>Outras observações sobre o Banheiro Master</label><textarea name="bm_obs" rows="2"></textarea></div>
+</div>
+
+
+<div class="card accent" id="sec-closet">
+  <h2>👔 4. Closet Master — Reforma</h2>
+  <div class="info warn">Reformulação da área do closet da suíte master.</div>
+  <div class="info tip"><strong>Dica:</strong> Se não tiver sugestão específica, pode deixar em branco.</div>
+  <h3>4.1 Demolição e Layout</h3>
+  <div class="fg"><label>Sobre a demolição de paredes: além das restrições estruturais, existe alguma divisão que faça questão de manter ou eliminar? Alguma porta de acesso que queira manter ou remover?</label>
+    <textarea name="cl_demolicao" rows="3" placeholder="Ex: Gostaria de eliminar a parede entre closet e quarto..."></textarea></div>
+  <h3>4.2 Configuração do Armário</h3>
+  <div class="g2">
+    <div class="fg"><label>Tipo de armário</label><select name="cl_tipo"><option value="">Selecione...</option><option>Aberto (sem portas)</option><option>Com portas de vidro/espelho</option><option>Com portas opacas (MDF)</option><option>Com portas de correr</option><option>Misto</option></select></div>
+    <div class="fg"><label>Qtde estimada de portas</label><input type="text" name="cl_portas" placeholder="Ex: 6 a 8 portas"></div>
+  </div>
+  <div class="g2">
+    <div class="fg"><label>Espelho de corpo inteiro?</label><div class="radio-row"><label><input type="radio" name="cl_esp" value="Sim"> Sim</label><label><input type="radio" name="cl_esp" value="Não"> Não</label></div></div>
+    <div class="fg"><label>Bancada de maquiagem?</label><div class="radio-row"><label><input type="radio" name="cl_maq" value="Sim"> Sim</label><label><input type="radio" name="cl_maq" value="Não"> Não</label></div></div>
+  </div>
+  <h3>4.3 Armazenamento</h3>
+  <div class="fg"><label>O que precisa ter no closet:</label>
+    <div class="chk-group"><label class="chk-item"><input type="checkbox" name="cl_armaz_Muitas_gavetas" value="Muitas gavetas"> Muitas gavetas</label><label class="chk-item"><input type="checkbox" name="cl_armaz_Muitos_cabideiros" value="Muitos cabideiros"> Muitos cabideiros</label><label class="chk-item"><input type="checkbox" name="cl_armaz_Nichos_para_bolsas_acessórios" value="Nichos para bolsas/acessórios"> Nichos para bolsas/acessórios</label><label class="chk-item"><input type="checkbox" name="cl_armaz_Espaço_para_jóias_relógios" value="Espaço para jóias/relógios"> Espaço para jóias/relógios</label><label class="chk-item"><input type="checkbox" name="cl_armaz_Sapateira_grande" value="Sapateira grande"> Sapateira grande</label><label class="chk-item"><input type="checkbox" name="cl_armaz_Sapateira_média" value="Sapateira média"> Sapateira média</label><label class="chk-item"><input type="checkbox" name="cl_armaz_Calceiro" value="Calceiro"> Calceiro</label><label class="chk-item"><input type="checkbox" name="cl_armaz_Espaço_para_malas" value="Espaço para malas"> Espaço para malas</label></div></div>
+  <div class="g2">
+    <div class="fg"><label>Prefere roupas dobradas ou no cabide?</label><select name="cl_roupa"><option value="">Selecione...</option><option>Mais dobradas</option><option>Mais no cabide</option><option>Equilibrado</option></select></div>
+    <div class="fg"><label>Puxador</label><select name="cl_pux"><option value="">Selecione...</option><option>Cava (embutido)</option><option>Tradicional</option><option>Sem preferência</option></select></div>
+  </div>
+  <h3>4.4 Conforto e Iluminação</h3>
+  <div class="g2">
+    <div class="fg"><label>Puff ou assento?</label><div class="radio-row"><label><input type="radio" name="cl_puff" value="Sim"> Sim</label><label><input type="radio" name="cl_puff" value="Não"> Não</label></div></div>
+    <div class="fg"><label>Iluminação interna nos armários?</label><div class="radio-row"><label><input type="radio" name="cl_luzI" value="Sim"> Sim</label><label><input type="radio" name="cl_luzI" value="Não"> Não</label></div></div>
+  </div>
+  <div class="g2">
+    <div class="fg"><label>Iluminação geral</label><select name="cl_ilum"><option value="">Selecione...</option><option>Quente / Amarela</option><option>Neutra</option><option>Mista</option></select></div>
+    <div class="fg"><label>Ar condicionado?</label><select name="cl_ac"><option value="">Selecione...</option><option>Sim — Novo</option><option>Aproveitar existente</option><option>Não necessário</option></select></div>
+  </div>
+  <div class="fg"><label>Iluminação: planejada/personalizada ou simplificada?</label>
+    <div class="radio-row"><label><input type="radio" name="cl_luz_plan" value="Planejada"> Planejada</label><label><input type="radio" name="cl_luz_plan" value="Simplificada"> Simplificada</label><label><input type="radio" name="cl_luz_plan" value="Sem preferência"> Sem preferência</label></div></div>
+  <h3>4.5 Acabamentos</h3>
+  <div class="g2">
+    <div class="fg"><label>Trocar piso?</label><select name="cl_piso"><option value="">Selecione...</option><option>Sim</option><option>Não (manter)</option></select></div>
+    <div class="fg"><label>Material desejado</label><input type="text" name="cl_piso_mat" placeholder="Ex: Vinílico, porcelanato..."></div>
+  </div>
+  <div class="g2">
+    <div class="fg"><label>Forro</label><select name="cl_forro"><option value="">Selecione...</option><option>Manter + detalhes</option><option>Novo total</option><option>Sem preferência</option></select></div>
+    <div class="fg"><label>Cortina</label><select name="cl_cortina"><option value="">Selecione...</option><option>Tecido</option><option>Persiana</option><option>Ambos</option><option>N/A</option></select></div>
+  </div>
+  <div class="fg"><label>Tomadas: precisa de mais que o normal?</label>
+    <div class="radio-row"><label><input type="radio" name="cl_tomadas" value="Mais tomadas"> Mais tomadas</label><label><input type="radio" name="cl_tomadas" value="Número médio"> Número médio</label><label><input type="radio" name="cl_tomadas" value="Sem preferência"> Sem preferência</label></div></div>
+  <div class="fg"><label>Outras observações sobre o Closet</label><textarea name="cl_obs" rows="2"></textarea></div>
+</div>
+
+
+<div class="card accent" id="sec-nova-suite">
+  <h2>🏗️ 5. Nova Suíte — Dormitório (Sótão)</h2>
+  <div class="info warn">Criação de novo dormitório com readequação da cobertura para platibanda.</div>
+  <div class="info tip"><strong>Dica:</strong> Se não tiver sugestão, pode deixar em branco.</div>
+  <h3>5.1 Uso e Mobiliário</h3>
+  <div class="g2">
+    <div class="fg"><label>Uso principal</label><select name="ns_uso"><option value="">Selecione...</option><option>Quarto de hóspedes</option><option>Morador fixo</option><option>Multiuso (quarto + escritório)</option><option>Outro</option></select></div>
+    <div class="fg"><label>Se morador fixo, quem?</label><input type="text" name="ns_morador" placeholder="Ex: Filho, mãe..."></div>
+  </div>
+  <div class="g2">
+    <div class="fg"><label>Tamanho da cama</label><select name="ns_cama"><option value="">Selecione...</option><option>King Size</option><option>Queen Size</option><option>Casal padrão</option><option>Solteiro</option><option>2 camas de solteiro</option></select></div>
+    <div class="fg"><label>Cabeceira</label><select name="ns_cabec"><option value="">Selecione...</option><option>Estofada</option><option>MDF</option><option>Sem preferência</option></select></div>
+  </div>
+  <div class="g2">
+    <div class="fg"><label>Mesa de cabeceira</label><select name="ns_mesa_cab"><option value="">Selecione...</option><option>Pequena</option><option>Média</option><option>Grande</option></select></div>
+    <div class="fg"><label>Poltrona no quarto?</label><div class="radio-row"><label><input type="radio" name="ns_pol" value="Sim"> Sim</label><label><input type="radio" name="ns_pol" value="Não"> Não</label></div></div>
+  </div>
+  <div class="fg"><label>Necessidade de armazenamento adicional além do guarda-roupas? (cômoda, gaveteiro, prateleiras...)</label>
+    <textarea name="ns_armazenamento" rows="2" placeholder="Ex: Sim, gostaria de uma cômoda..."></textarea></div>
+  <h3>5.2 Home Office e Penteadeira</h3>
+  <div class="fg"><label>Tem intenção de ter home office na nova suíte?</label><div class="radio-row"><label><input type="radio" name="ns_office" value="Sim"> Sim</label><label><input type="radio" name="ns_office" value="Não"> Não</label></div></div>
+  <div class="fg"><label>Se sim, tamanho da mesa?</label><select name="ns_mesa_tam"><option value="">Selecione...</option><option>Mesa maior (monitor grande / 2 telas)</option><option>Tamanho normal</option><option>Reduzida (apenas notebook)</option></select></div>
+  <div class="fg"><label>Penteadeira é necessidade neste quarto?</label><div class="radio-row"><label><input type="radio" name="ns_pent" value="Sim"> Sim</label><label><input type="radio" name="ns_pent" value="Não"> Não</label><label><input type="radio" name="ns_pent" value="Sem preferência"> Sem preferência</label></div></div>
+  <h3>5.3 Tecnologia</h3>
+  <div class="g2">
+    <div class="fg"><label>TV no quarto?</label><select name="ns_tv"><option value="">Selecione...</option><option>Sim — Smart TV</option><option>Não</option></select></div>
+    <div class="fg"><label>Tamanho</label><input type="text" name="ns_tv_pol" placeholder='Ex: 50"...'></div>
+  </div>
+  <div class="g2">
+    <div class="fg"><label>Ar condicionado</label><select name="ns_ac"><option value="">Selecione...</option><option>Novo — Split/Inverter</option><option>Não necessário</option></select></div>
+    <div class="fg"><label>Internet cabeada?</label><div class="radio-row"><label><input type="radio" name="ns_net" value="Sim"> Sim</label><label><input type="radio" name="ns_net" value="Não (Wi-Fi)"> Não (Wi-Fi)</label></div></div>
+  </div>
+  <h3>5.4 Acabamentos</h3>
+  <div class="g2">
+    <div class="fg"><label>Piso</label><input type="text" name="ns_piso" placeholder="Ex: Vinílico, porcelanato..."></div>
+    <div class="fg"><label>Destaque na parede</label><input type="text" name="ns_parede" placeholder="Ex: Madeira ripada, papel de parede..."></div>
+  </div>
+  <div class="g2">
+    <div class="fg"><label>Iluminação geral</label><select name="ns_ilum"><option value="">Selecione...</option><option>Quente / Suave</option><option>Neutra</option><option>Mista</option></select></div>
+    <div class="fg"><label>Iluminação na cabeceira</label><select name="ns_ilum_cab"><option value="">Selecione...</option><option>Pendente</option><option>Arandela</option><option>Abajur</option><option>Perfil de LED</option><option>Sem preferência</option></select></div>
+  </div>
+  <div class="g2">
+    <div class="fg"><label>Cortina</label><select name="ns_cortina"><option value="">Selecione...</option><option>Tecido</option><option>Persiana</option><option>Ambos</option></select></div>
+    <div class="fg"><label>Blackout?</label><div class="radio-row"><label><input type="radio" name="ns_bk" value="Sim"> Sim</label><label><input type="radio" name="ns_bk" value="Não"> Não</label></div></div>
+  </div>
+  <div class="fg"><label>Forro</label><select name="ns_forro"><option value="">Selecione...</option><option>Com detalhes (sancas, iluminação indireta)</option><option>Liso / simples</option><option>Sem preferência</option></select></div>
+  <div class="fg"><label>Iluminação: planejada/personalizada ou simplificada?</label>
+    <div class="radio-row"><label><input type="radio" name="ns_luz_plan" value="Planejada"> Planejada</label><label><input type="radio" name="ns_luz_plan" value="Simplificada"> Simplificada</label><label><input type="radio" name="ns_luz_plan" value="Sem preferência"> Sem preferência</label></div></div>
+  <h3>5.5 Armário do Novo Quarto</h3>
+  <div class="g2">
+    <div class="fg"><label>Tamanho do armário</label><select name="ns_arm_tam"><option value="">Selecione...</option><option>Grande</option><option>Médio</option><option>Pequeno (complementar)</option></select></div>
+    <div class="fg"><label>Quantas portas?</label><input type="text" name="ns_arm_portas" placeholder="Ex: 4, 6, 8..."></div>
+  </div>
+  <div class="g2">
+    <div class="fg"><label>Tipo de abertura</label><select name="ns_arm_abert"><option value="">Selecione...</option><option>Portas de correr</option><option>Portas de abrir</option><option>Sem preferência</option></select></div>
+    <div class="fg"><label>Portas com espelho?</label><div class="radio-row"><label><input type="radio" name="ns_espP" value="Sim"> Sim</label><label><input type="radio" name="ns_espP" value="Não"> Não</label><label><input type="radio" name="ns_espP" value="Sem preferência"> Sem preferência</label></div></div>
+  </div>
+  <div class="g2">
+    <div class="fg"><label>Mais gavetas que o normal?</label><div class="radio-row"><label><input type="radio" name="ns_gav" value="Sim, bastante"> Sim, bastante</label><label><input type="radio" name="ns_gav" value="Normal"> Normal</label></div></div>
+    <div class="fg"><label>Tem muitos sapatos?</label><div class="radio-row"><label><input type="radio" name="ns_sap" value="Sim, bastante"> Sim, bastante</label><label><input type="radio" name="ns_sap" value="Média"> Média</label><label><input type="radio" name="ns_sap" value="Poucos"> Poucos</label></div></div>
+  </div>
+  <div class="g2">
+    <div class="fg"><label>Usa mais cabide ou roupa dobrada?</label><select name="ns_arm_uso"><option value="">Selecione...</option><option>Mais cabide</option><option>Mais dobrada</option><option>Equilibrado</option></select></div>
+    <div class="fg"><label>Roupeiro ou maleiro?</label><div class="radio-row"><label><input type="radio" name="ns_roup" value="Roupeiro"> Roupeiro</label><label><input type="radio" name="ns_roup" value="Maleiro"> Maleiro</label><label><input type="radio" name="ns_roup" value="Ambos"> Ambos</label><label><input type="radio" name="ns_roup" value="Não"> Não</label></div></div>
+  </div>
+  <div class="fg"><label>Puxador</label><select name="ns_pux"><option value="">Selecione...</option><option>Cava (embutido)</option><option>Tradicional</option><option>Sem preferência</option></select></div>
+  <div class="fg"><label>Tomadas: mais que o normal?</label><div class="radio-row"><label><input type="radio" name="ns_tomadas" value="Mais tomadas"> Mais tomadas</label><label><input type="radio" name="ns_tomadas" value="Número médio"> Número médio</label><label><input type="radio" name="ns_tomadas" value="Sem preferência"> Sem preferência</label></div></div>
+  <div class="fg"><label>Observações sobre a nova suíte</label><textarea name="ns_obs" rows="2"></textarea></div>
+</div>
+
+
+<div class="card accent" id="sec-bnh-novo">
+  <h2>🛁 6. Banheiro da Nova Suíte (Sótão)</h2>
+  <div class="info warn">Banheiro privativo do novo dormitório.</div>
+  <div class="info tip"><strong>Dica:</strong> Se não tiver sugestão, pode deixar em branco.</div>
+  <h3>6.1 Bancada</h3>
+  <div class="g2">
+    <div class="fg"><label>Material / cor</label><input type="text" name="nb_bancada" placeholder="Ex: Porcelanato, mármore..."></div>
+    <div class="fg"><label>Cuba</label><select name="nb_cuba"><option value="">Selecione...</option><option>De embutir</option><option>De sobrepor / Apoio</option><option>Esculpida na pedra</option><option>Sem preferência</option></select></div>
+  </div>
+  <div class="fg"><label>Bancada clara ou escura?</label><select name="nb_tom"><option value="">Selecione...</option><option>Clara</option><option>Escura</option><option>Sem preferência</option></select></div>
+  <h3>6.2 Banho e Louças</h3>
+  <div class="g2">
+    <div class="fg"><label>Chuveiro</label><select name="nb_chuveiro"><option value="">Selecione...</option><option>De teto (rain shower)</option><option>De parede</option><option>Duplo (teto + mão)</option><option>Sem preferência</option></select></div>
+    <div class="fg"><label>Vaso sanitário</label><select name="nb_vaso"><option value="">Selecione...</option><option>Caixa acoplada</option><option>Suspenso</option><option>Sem preferência</option></select></div>
+  </div>
+  <div class="g2">
+    <div class="fg"><label>Ducha higiênica?</label><div class="radio-row"><label><input type="radio" name="nb_ducha" value="Sim"> Sim</label><label><input type="radio" name="nb_ducha" value="Não"> Não</label></div></div>
+    <div class="fg"><label>Água quente na torneira?</label><div class="radio-row"><label><input type="radio" name="nb_aq" value="Sim"> Sim</label><label><input type="radio" name="nb_aq" value="Não"> Não</label></div></div>
+  </div>
+  <div class="fg"><label>Torneira</label><select name="nb_torn"><option value="">Selecione...</option><option>Monocomando</option><option>Misturador</option><option>De parede</option><option>Sem preferência</option></select></div>
+  <h3>6.3 Revestimentos</h3>
+  <div class="g2">
+    <div class="fg"><label>Piso</label><input type="text" name="nb_piso" placeholder="Ex: Porcelanato antiderrapante..."></div>
+    <div class="fg"><label>Paredes</label><input type="text" name="nb_paredes" placeholder="Ex: Porcelanato retificado..."></div>
+  </div>
+  <h3>6.4 Metais e Iluminação</h3>
+  <div class="g2">
+    <div class="fg"><label>Acabamento metais</label><select name="nb_metais"><option value="">Selecione...</option><option>Cromado</option><option>Preto fosco</option><option>Dourado</option><option>Sem preferência</option></select></div>
+    <div class="fg"><label>Iluminação</label><select name="nb_ilum"><option value="">Selecione...</option><option>Quente</option><option>Neutra</option><option>Mista</option></select></div>
+  </div>
+  <div class="fg"><label>Extras:</label>
+    <div class="chk-group"><label class="chk-item"><input type="checkbox" name="nb_extras_Nicho_no_box" value="Nicho no box"> Nicho no box</label><label class="chk-item"><input type="checkbox" name="nb_extras_Ralo_linear" value="Ralo linear"> Ralo linear</label><label class="chk-item"><input type="checkbox" name="nb_extras_Espelho_com_LED" value="Espelho com LED"> Espelho com LED</label><label class="chk-item"><input type="checkbox" name="nb_extras_Toalheiro_elétrico" value="Toalheiro elétrico"> Toalheiro elétrico</label><label class="chk-item"><input type="checkbox" name="nb_extras_Banco_no_box" value="Banco no box"> Banco no box</label><label class="chk-item"><input type="checkbox" name="nb_extras_Exaustor" value="Exaustor"> Exaustor</label></div></div>
+  <div class="fg"><label>Itens de adorno ou necessidades elétricas? (tomadas p/ secador, etc.)</label>
+    <textarea name="nb_adornos" rows="2"></textarea></div>
+  <div class="fg"><label>Iluminação: planejada ou simplificada?</label>
+    <div class="radio-row"><label><input type="radio" name="nb_luz_plan" value="Planejada"> Planejada</label><label><input type="radio" name="nb_luz_plan" value="Simplificada"> Simplificada</label><label><input type="radio" name="nb_luz_plan" value="Sem preferência"> Sem preferência</label></div></div>
+  <div class="fg"><label>Tomadas: mais que o normal?</label><div class="radio-row"><label><input type="radio" name="nb_tomadas" value="Mais"> Mais</label><label><input type="radio" name="nb_tomadas" value="Médio"> Médio</label><label><input type="radio" name="nb_tomadas" value="Sem preferência"> Sem preferência</label></div></div>
+  <div class="fg"><label>Observações</label><textarea name="nb_obs" rows="2"></textarea></div>
+</div>
+
+
+<div class="card" id="sec-infra">
+  <h2>⚙️ 7. Infraestrutura e Automação</h2>
+  <h3>7.1 Automação</h3>
+  <div class="fg"><label>Deseja que algo seja automatizado nos ambientes? (Ex: luzes por Alexa, cortinas elétricas...)</label>
+    <textarea name="infra_auto_texto" rows="2" placeholder="Ex: Gostaria de controlar as luzes por Alexa..."></textarea></div>
+  <div class="fg"><label>Itens de interesse:</label>
+    <div class="chk-group"><label class="chk-item"><input type="checkbox" name="infra_auto_Cortinas_elétricas" value="Cortinas elétricas"> Cortinas elétricas</label><label class="chk-item"><input type="checkbox" name="infra_auto_Iluminação_inteligente_(Alexa_" value="Iluminação inteligente (Alexa/Google)"> Iluminação inteligente (Alexa/Google)</label><label class="chk-item"><input type="checkbox" name="infra_auto_Climatização_(AC)" value="Climatização (AC)"> Climatização (AC)</label><label class="chk-item"><input type="checkbox" name="infra_auto_Som_ambiente" value="Som ambiente"> Som ambiente</label><label class="chk-item"><input type="checkbox" name="infra_auto_Câmeras_Wi-Fi" value="Câmeras Wi-Fi"> Câmeras Wi-Fi</label><label class="chk-item"><input type="checkbox" name="infra_auto_Fechadura_digital" value="Fechadura digital"> Fechadura digital</label><label class="chk-item"><input type="checkbox" name="infra_auto_Assistente_virtual" value="Assistente virtual"> Assistente virtual</label></div></div>
+  <h3>7.2 Elétrica e Dados</h3>
+  <div class="g2">
+    <div class="fg"><label>Internet</label><select name="infra_net"><option value="">Selecione...</option><option>Apenas Wi-Fi</option><option>Pontos cabeados</option></select></div>
+    <div class="fg"><label>Se cabeada, quais ambientes?</label><input type="text" name="infra_net_onde" placeholder="Ex: Nova suíte, saleta..."></div>
+  </div>
+  <div class="fg"><label>Tomada em posição especial?</label><textarea name="infra_tomada_esp" rows="2" placeholder="Ex: Tomada alta para secador no closet..."></textarea></div>
+  <div class="fg"><label>Quantidade geral de tomadas: mais que o normal ou padrão?</label>
+    <div class="radio-row"><label><input type="radio" name="infra_tomadas" value="Preciso de mais"> Preciso de mais</label><label><input type="radio" name="infra_tomadas" value="Padrão suficiente"> Padrão suficiente</label><label><input type="radio" name="infra_tomadas" value="Sem preferência"> Sem preferência</label></div></div>
+  <h3>7.3 Hidráulica</h3>
+  <div class="g2">
+    <div class="fg"><label>Aquecimento atual</label><select name="infra_aquec"><option value="">Selecione...</option><option>Solar</option><option>A gás</option><option>Elétrico</option><option>Misto</option></select></div>
+    <div class="fg"><label>Alterar/ampliar?</label><input type="text" name="infra_aquec_alt" placeholder="Ex: Ampliar solar para a nova suíte..."></div>
+  </div>
+  <h3>7.4 Segurança</h3>
+  <div class="fg"><label>Segurança nos novos ambientes?</label><textarea name="infra_seg" rows="2" placeholder="Ex: Câmera no acesso ao sótão..."></textarea></div>
+</div>
+
+
+<div class="card" id="sec-obs">
+  <h2>📝 8. Observações Finais</h2>
+  <div class="fg"><label>Sobre a Saleta Íntima — quais móveis ou funcionalidades gostaria? (Sofá p/ TV, poltrona de leitura, escritório, ou combinação?)</label>
+    <textarea name="saleta_moveis" rows="3" placeholder="Ex: Sofá pequeno para TV, espaço para leitura com poltrona, escritório secundário..."></textarea></div>
+  <div class="fg"><label>Iluminação da saleta: planejada ou simplificada?</label>
+    <div class="radio-row"><label><input type="radio" name="sal_luz" value="Planejada"> Planejada</label><label><input type="radio" name="sal_luz" value="Simplificada"> Simplificada</label><label><input type="radio" name="sal_luz" value="Sem preferência"> Sem preferência</label></div></div>
+  <div class="fg"><label>Algum sonho ou desejo não mencionado?</label>
+    <textarea name="sonhos" rows="4" placeholder="Conte-nos tudo!"></textarea></div>
+  <div class="fg"><label>Preocupações com a obra? (barulho, horários...)</label>
+    <textarea name="preocupacoes" rows="2"></textarea></div>
+  <div class="g2">
+    <div class="fg"><label>Orçamento aproximado</label><input type="text" name="orcamento" placeholder="Ex: R$ 80.000 a R$ 120.000"></div>
+    <div class="fg"><label>Prazo desejado</label><input type="text" name="prazo" placeholder="Ex: 4 meses, sem pressa..."></div>
+  </div>
+  <div class="fg"><label>Plantas nos ambientes?</label>
+    <div class="radio-row"><label><input type="radio" name="plantas" value="Sim — Naturais"> Sim — Naturais</label><label><input type="radio" name="plantas" value="Sim — Artificiais"> Sim — Artificiais</label><label><input type="radio" name="plantas" value="Não"> Não</label></div></div>
+</div>
+
+<div class="submit-card">
+  <h2>✉️ Enviar Respostas</h2>
+  <p>Ao clicar no botão abaixo, suas respostas serão enviadas diretamente para o Arq. Marcelo Almeida.</p>
+  <div class="btn-row">
+    <button type="submit" class="btn btn-send">📧 Enviar Questionário</button>
+    <button type="button" class="btn" onclick="window.print()">🖨️ Gerar PDF</button>
+  </div>
+  <p style="margin-top:12px;font-size:.85rem;opacity:.7">Caso prefira, pode também gerar um PDF e enviar por WhatsApp ou e-mail.</p>
+</div>
+
+</main>
+</form>
+<footer>
+  Marcelo Almeida — Arquitetura &amp; Urbanismo<br>
+  CAU nº A313706-6 &nbsp;|&nbsp; (61) 99919-2302 &nbsp;|&nbsp; malmeidaarquitetura@gmail.com
+</footer>
+
+<script>
+// Nav highlight
+const secs = document.querySelectorAll('.card[id]');
+const navs = document.querySelectorAll('nav.topnav a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  secs.forEach(s => { if (scrollY >= s.offsetTop - 120) cur = s.id; });
+  navs.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+});
+
+// Progress bar
+function updateProgress() {
+  const fields = document.querySelectorAll('textarea, input[type=text], select');
+  let filled = 0, total = 0;
+  fields.forEach(f => {
+    if (f.name && f.name !== '_gotcha') {
+      total++;
+      if (f.value && f.value.trim()) filled++;
+    }
+  });
+  const radios = {};
+  document.querySelectorAll('input[type=radio]').forEach(r => { radios[r.name] = radios[r.name] || r.checked; if(r.checked) radios[r.name] = true; });
+  Object.keys(radios).forEach(k => { total++; if(radios[k]) filled++; });
+  const checks = document.querySelectorAll('input[type=checkbox]:checked');
+  if (checks.length > 0) filled += 2;
+  total += 2;
+  const pct = Math.min(100, Math.round((filled / total) * 100));
+  document.getElementById('prog-pct').textContent = pct + '%';
+  document.getElementById('prog-fill').style.width = pct + '%';
+}
+document.addEventListener('input', updateProgress);
+document.addEventListener('change', updateProgress);
+updateProgress();
+</script>
+
+</body>
+</html>
